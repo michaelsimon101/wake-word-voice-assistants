@@ -126,8 +126,12 @@ light:
     default_transition_length: 250ms
 
 i2c:
-  scl: GPIO18
-  sda: GPIO8
+  - id: bus_a
+    scl: GPIO18
+    sda: GPIO8
+  - id: bus_b
+    scl: GPIO40
+    sda: GPIO41
 
 i2s_audio:
   - id: i2s_audio_bus
@@ -140,12 +144,14 @@ audio_adc:
     id: es7210_adc
     bits_per_sample: 16bit
     sample_rate: 16000
+    i2c_id: bus_a
 
 audio_dac:
   - platform: es8311
     id: es8311_dac
     bits_per_sample: 16bit
     sample_rate: 48000
+    i2c_id: bus_a
 
 microphone:
   - platform: i2s_audio
